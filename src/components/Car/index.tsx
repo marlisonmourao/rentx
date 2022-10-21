@@ -1,3 +1,5 @@
+import { TouchableOpacityProps } from "react-native";
+
 import {
   Container,
   Details,
@@ -11,25 +13,18 @@ import {
   CarImage,
 } from "./styles";
 
-import GasolineSvg from "@assets/gasoline.svg";
+import { CarDTO } from "../../dtos/CarDTO";
+import { getAcessoryIcon } from "@utils/getAcessoryIcon";
 
-interface CarData {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: number;
-  },
-  thumbnail: string;
+interface Props extends TouchableOpacityProps {
+  data: CarDTO;
 }
 
-interface Props {
-    data: CarData;
-}
+export function Car({ data, ...rest }: Props) {
+  const MotorIcon = getAcessoryIcon(data.fuel_type)
 
-export function Car({ data }: Props) {
   return (
-    <Container>
+    <Container activeOpacity={0.7} {...rest}>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>
@@ -40,14 +35,14 @@ export function Car({ data }: Props) {
             <Price>{`R$ ${data.rent.price}`}</Price>
           </Rent>
           <Type>
-            <GasolineSvg />
+            <MotorIcon />
           </Type>
         </About>
       </Details>
 
-      <CarImage
-        source={{uri: data.thumbnail}}
-        resizeMode="contain"
+      <CarImage 
+        source={{ uri: data.thumbnail }} 
+        resizeMode="contain" 
       />
     </Container>
   );
