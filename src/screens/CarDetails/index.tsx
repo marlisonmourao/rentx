@@ -1,3 +1,4 @@
+import { StatusBar } from "react-native"
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import {
@@ -36,7 +37,7 @@ export function CarDetails() {
   const { car } = route.params as Params;
 
   function handleConfirmRental() {
-    navigation.navigate("Scheduling")
+    navigation.navigate("Scheduling", { car })
   }
 
   function handleBack() {
@@ -45,6 +46,11 @@ export function CarDetails() {
 
   return (
     <Container>
+      <StatusBar 
+        backgroundColor="transparent"
+        barStyle="dark-content"
+        translucent
+      />
       <Header>
         <BackButton onPress={handleBack} />
       </Header>
@@ -86,7 +92,8 @@ export function CarDetails() {
       <Footer>
         <Button 
           title="Escolher período do aluguel" 
-          onPress={handleConfirmRental} 
+          onPress={handleConfirmRental}
+          disabled={false}
         />
       </Footer>
     </Container>

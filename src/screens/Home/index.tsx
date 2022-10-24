@@ -2,8 +2,18 @@ import { useEffect, useState } from "react";
 import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { Ionicons } from "@expo/vector-icons";
 
-import { Container, Header, TotalCars, HeaderContent, CarList } from "./styles";
+import { useTheme } from "styled-components";
+
+import { 
+  Container, 
+  Header, 
+  TotalCars, 
+  HeaderContent, 
+  CarList,
+  MyCarButton
+} from "./styles";
 
 import Logo from "@assets/logo.svg";
 import api from "../../api/api";
@@ -18,9 +28,14 @@ export function Home() {
   const [loading, setLoading] = useState(true);
 
   const navigation = useNavigation();
+  const theme = useTheme()
 
   function handleCarDetails(car:CarDTO) {
     navigation.navigate("CarDetails", { car });
+  }
+
+  function handlOpenMyCar() {
+    navigation.navigate("MyCars");
   }
 
   async function fecthCar() {
@@ -64,6 +79,14 @@ export function Home() {
           )}
         />
       )}
+
+      <MyCarButton activeOpacity={0.7} onPress={handlOpenMyCar}>
+        <Ionicons 
+          name="ios-car-sport"
+          size={32}
+          color={theme.colors.shape}
+        />
+      </MyCarButton>
     </Container>
   );
 }

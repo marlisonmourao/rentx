@@ -1,8 +1,5 @@
 import { RFValue } from "react-native-responsive-fontsize";
-import {
-  getStatusBarHeight,
-  getBottomSpace,
-} from "react-native-iphone-x-helper";
+import {getStatusBarHeight,getBottomSpace} from "react-native-iphone-x-helper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import styled from "styled-components/native";

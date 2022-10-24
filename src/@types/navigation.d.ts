@@ -5,7 +5,8 @@ export declare global {
       CarDetails, 
       Scheduling, 
       SchedulingDetails, 
-      SchedulingComplete, 
+      SchedulingComplete,
+      MyCars 
     }
   }
 }
