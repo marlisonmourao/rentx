@@ -63,7 +63,7 @@
 
 ```bash
 # Para fazer o download do projeto para seu computador
-$ git clone https://github.com/andrelinos/rentx.git
+$ git clone git@github.com:marlisonmourao/GoFinan-as.git
 
 # Entrar na pasta do projeto 
 $ cd rentx
